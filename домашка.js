@@ -1,3 +1,4 @@
+console.log('файлик с задачками');
 // let first_age = prompt("?");
 // let de = Number(first_age);
 // alert(`${de + 5}`);
@@ -3149,16 +3150,7 @@
 // console.log(arr3);
 
 //? функция поиска минимального и максимально значения в массиве
-//1. через метод Math
-// const res = [];
-// function minMax(arr) {
-//     const sum1 = Math.min.apply(null, arr);
-//     const sum2 = Math.max.apply(null, arr);
-//     return res.push(sum1, sum2);
-// }
-// minMax([3, 6, 9]);
-// console.log(res);
-//2. через спред
+
 // function minMax2(arr) {
 //     return [Math.min(...arr), Math.max(...arr)];
 // }
@@ -3240,10 +3232,10 @@
 
 //? функция поиска гласных в строке. сохраняю в массив гласные и далее цикл - перебирем строку приводя каждый символ к нижнему регистру , и если массив с гласными содержит символ счётчик прибавляется . проверку наличия делает инклюдс
 // function searchVowels(string) {
-//     const qwer = ['a', 'e', 'i', 'o', 'u'];
+//     const arr = ['a', 'e', 'i', 'o', 'u'];
 //     let count = 0;
 //     for (symbol of string.toLowerCase()) {
-//         if (qwer.includes(symbol)) {
+//         if (arr.includes(symbol)) {
 //             count++;
 //         }
 //     }
@@ -3322,21 +3314,6 @@
 //! 03.04
 //? скобки ебучие на входе строка можно перебрать её можно преобразовать в строку
 // function validParentheses(parenStr) {
-//     if (parenStr[0] === ')') {
-//         return false;
-//     }
-//     let current = 0;
-//     for (i = 0; i < parenStr.length; i++) {
-//         if (parenStr[i] === '(') {
-//             current++;
-//         } else {
-//             current--;
-//         }
-//     }
-//     if (current < 0) {
-//         return false;
-//     }
-//     return current === 0;
 
 //     let arr1 = [];
 //     let arr2 = [];
@@ -3630,18 +3607,475 @@
 // console.log(deepCount([1, 2, [3, 4, [5]]]));
 
 //! 11.04
-//? функция принимает две строки и сравнивает их. если строки одинаковы или за исключением одного символа то возвращает тру если нет фалс
-var mispelled = function (word1, word2) {
-    let num = 0;
-    if (word1.length - word2.length > 1) return false;
-    if (word2.length - word1.length > 1) return false;
+// //? функция принимает две строки и сравнивает их. если строки одинаковы или за исключением одного символа то возвращает тру если нет фалс
+// var mispelled = function (word1, word2) {
+//     let num = 0;
+//     if (word1.length - word2.length > 1) return false;
+//     if (word2.length - word1.length > 1) return false;
 
-    for (i = 0; i < word1.length; i++) {
-        if (!word1.includes(word2[i])) {
-            num++;
-        }
-    }
-    return num <= 1 ? true : false;
-};
+//     for (i = 0; i < word1.length; i++) {
+//         if (!word1.includes(word2[i])) {
+//             num++;
+//         }
+//     }
+//     return num <= 1 ? true : false;
+// };
 
-console.log(mispelled('versed', 'v5rsed'));
+// console.log(mispelled('versed', 'v5rsed'));
+
+//!16.04
+//? функция принимает массив числе и число. массив нужно отсортировать по убыванию и умножить по порядку столько раз сколько написано в числе
+// function maxProduct(numbers, size) {
+//     let sortNum = numbers.sort((a, b) => b - a);
+//     let newSortNum = [];
+//     for (i = 0; i < size; i++) {
+//         newSortNum.push(sortNum[i]);
+//     }
+//     return newSortNum.reduce((a, b) => a * b);
+// }
+
+// function maxProduct(numbers, size) {
+//     return numbers
+//         .sort((a, b) => b - a)
+//         .slice(0, size)
+//         .reduce((sum, el) => sum * el);
+// }
+// console.log(maxProduct([10, 8, 7, 9], 3));
+//! 19.04
+//? Напишите на TypeScript/JavaScript функцию, которая посчитает сколько нужно провести игр в турнире для заданного количества команд.
+
+// function getNumberOfGames(teamsNumber) {
+//     let teamsNumber2 = 0;
+//     let countRound = 0;
+
+//     if (teamsNumber < 1 || teamsNumber > 100) {
+//         return;
+//     }
+//     if (teamsNumber % 2 === 0 && teamsNumber > 1) {
+//         teamsNumber2 = teamsNumber / 2;
+
+//         countRound += teamsNumber2;
+
+//         countRound += getNumberOfGames(teamsNumber2);
+//     } else if (teamsNumber % 2 && teamsNumber > 1) {
+//         teamsNumber2 = (teamsNumber - 1) / 2;
+
+//         countRound += teamsNumber2;
+
+//         countRound += getNumberOfGames(teamsNumber2 + 1);
+//     }
+
+//     return countRound;
+// }
+
+// console.log(getNumberOfGames(100));
+
+// function num() {
+//     let count = 0;
+//     for (i = 2; i <= 100; i++) {
+//         count += getNumberOfGames(i);
+//     }
+//     return count;
+// }
+// console.log(num());
+
+//! 04.05 экзамены в тинь
+// Просто прибавь - justAddOne.js
+// Описание:
+// Необходимо реализовать метод, который будет принимать два аргумента. Первый аргумент - массив, состоящий из цифр от 0 до 9. Второй - любое целое положительное число. Метод должен возвращать массив из цифр от 0 до 9, который получается путем прибавления второго аргумента к числу, составленного из элементов массива. Если в массиве есть элементы, не являющиеся числами от 0 до 9, метод должен возвращать null.
+
+// Обратите внимание:
+// Корректными в массиве могут быть только числа от 0 до 9.
+// Число, которое можно прибавить, может быть любым целым положительным.
+// Если значение в массиве не является числом от 0 до 9, то должен возвращаться null.
+// function justAddOne(arr, num) {
+//     const isValNum = (n) => typeof n === 'number' && n > 0 && n < 10;
+//     if (
+//         typeof num === 'number' &&
+//         Number.isInteger(num) &&
+//         num > 0 &&
+//         arr.every(isValNum)
+//     ) {
+//         let result = Number(arr.join(''));
+//         return [result + num];
+//     }
+//     return null;
+// }
+// console.log(justAddOne([1, 2, 3], 2));
+// console.log(justAddOne([1, null, 3], 2));
+// console.log(justAddOne(['1', 2, 3], 2));
+// console.log(justAddOne([2, 2, 3], 2.2));
+
+//? Параллельные вычисления - parallelComputing.js
+// Описание:
+// Необходимо реализовать метод, который принимает два аргумента. Первый аргумент - массив синхронных функций, а второй - функция любого типа. Метод должен вызывать функции из первого аргумента и затем, когда они все выполнятся, запустить функцию, переданную вторым аргументом. В фукнции из массива необходимо передать callback , который вызывается по окончании выполнения.
+// Обратите внимание:
+// В методы, которые передаются в массиве, обязательно должен быть передан метод обратного вызова callback .
+// Количество методов в массиве может быть любым. И в каждом есть callback .
+// Метод parallelComputing должен после выполнения вызвать метод, переданный вторым аргументом.
+// function parallelComputing(arr, fn) {
+//     const callback = () => console.log('callback');
+//     arr.forEach((i) => {
+//         i(callback);
+//     });
+//     fn();
+// }
+
+// function testFn() {
+//     console.log('testFn');
+// }
+
+// function arr1(callback) {
+//     console.log(1);
+//     callback();
+// }
+
+// function arr2(callback) {
+//     console.log(2);
+//     callback();
+// }
+
+// parallelComputing([arr1, arr2], testFn);
+
+//! 01.06 функция принимает произвольное колличество массивов с разными значениями, нужно вернуть массив уникальных целых чисел, отсортированный в порядке убывания). Поскольку колличество массивов принимаемых в аргументы произвольное возпользуемся оператором аргументс и положим их все в один массив для удобства работы с данными в дальнейшем. Сначала нужно из всех подмассивов вытащить элементы и создать один большой массив. я знаю что уровней всего два и использую спред распыляю значения каждого подмассива в массиве и пушу это распыление в пустой переходный arr2. Следуящим шагом отфильтровываем массив и возвращаем только целые числа. Дальше в массив котрый возвращаем распыляем отсортванный по убыванию arr3 и методом сет оставляем только уникальные значения.
+// function unitUnique() {
+//     let arr = [...arguments];
+//     let arr2 = [];
+//     for (i = 0; i < arr.length; i++) {
+//         arr2.push(...arr[i]);
+//     }
+//     let arr3 = arr2.filter((i) => {
+//         if (Number.isInteger(i)) {
+//             return i;
+//         }
+//     });
+//     return [...new Set(arr3.sort((a, b) => b - a))];
+// }
+// console.log(unitUnique([1.1, 1, 3, 5], [2, 2, 3.3, 4]));
+// //! 08.07
+// //? функция принимает строку и слов в нижнем регистре. нужно вернуть строку слов с заглавной буквой в каждом слове. сперва, строку преобразовываем в массив и сохраняем в переменную разбив по пробелу. Создаём пустой массив для промежуточного варианта и пушим туда изменённые в цикле элементы массива (первую букву каждого элемента приведённую к верхнему и конкатенируем с этим же элементом без нулевого индекса(если в слайс передать один аргумент то он вырежет всё начиная с него)). далее возвращаем полученный массив и преобразовываем его в строку по разделу(разбивка по пробеду работает одинаково в сплит и джоин)
+// function qwerty(a) {
+//     const arr = a.split(' ');
+//     const arr2 = [];
+//     for (i = 0; i < arr.length; i++) {
+//         arr2.push(arr[i][0].toUpperCase() + arr[i].slice(1));
+//     }
+//     return arr2.join(' ');
+// }
+
+// console.log(qwerty('святослав деев'));
+// //? нужно вернуть результат сложения положительных чисел, функция принимает строку с отрицательным значением. Сначала проводим проверку если на входе строка то преобразовываем её в число и потом в положительное значение. Если это сразу число то только в положительное значение. В любос случае резултатом проведени проверки должно быть положильеное число в формате строки с которым дальше можно что то делать. Если бы я знал что это точно положительное число то сразу бы преобразовал его в строку, но я не знаю что прилетит в ыункцию поэтому перестраховываюсь условиями по проверке.
+// function sum_num(str) {
+//     let arr;
+//     if (typeof str === 'string') {
+//         arr = String(Math.abs(Number(str)));
+//     } else if (typeof str === 'number') {
+//         arr = String(Math.abs(str));
+//     }
+//     return arr.split('').reduce((a, b) => +a + +b);
+// }
+// console.log(sum_num('32'));
+//? функция принимает две строки, нужно сравнить являются ли в каждой из них символы одинаковые. проверяю не одинаковость строк а одинаковость символов без сравнения того в каком они порядке. объекты и массивы сравниваются по ссылке поэтому нужно сравнивать по значению сами строки. Функция хелпер возвращает  отсортированную строку.
+// function str(a, b) {
+//     const str1 = sortString(a)
+//     const str2 = sortString(b)
+//     return str1 == str2;
+// }
+// console.log(str('str', 'rts'));
+// console.log(str('str', 'ntr'));
+
+// function sortString(arr) {
+//     return arr.split('').sort().join('');
+// }
+
+//? функция принимает массив объектов с разными датами. нужно вернуть массив внутри которого объекты будут отсортированны по возрастанию.
+
+// function arr(array) {
+//     return array.sort((a, b) => {
+//         const c = Date.parse(a.date);
+//         const d = Date.parse(b.date);
+//         return c - d;
+//     });
+// }
+// console.log(
+//     arr([
+//         { date: '08.06.2023' },
+//         { date: '01.04.2000' },
+//         { date: '02.06.2002' },
+//     ])
+// );
+//! 10/06
+//? палиндром методом двух указателей. в первую очередь создаём указатели, левый будет равен нулю и правый будет длинны переданной строки минус 1 (так получаем последний индекс). Дальше создаём цикл условием которого будет условие - пока индекс левого указателя будет меньше правого. На каждой итерации цикла двигаем указатели, на каждой итерации сохраняя значения в переменные и сравнивем их приводя к нижнему регистру. + по условию в строке могут попадатся символы и это нужно обрабатывать пропуская их. Проверить является ли значение символом можно приведя его к разным регистрам, символ всегда в разных регистрах будет равен самому себе а буква нет.
+
+// function isPalindrom(str) {
+//     let left = 0;
+//     let right = str.length - 1;
+
+//     while (left < right) {
+//         let leftChar = str[left];
+//         let rightChar = str[right];
+
+//         if (leftChar.toLowerCase() === leftChar.toUpperCase()) {
+//             left++;
+//             continue;
+//         }
+
+//         if (rightChar.toLowerCase() === rightChar.toUpperCase()) {
+//             right--;
+//             continue;
+//         }
+
+//         if (leftChar.toLowerCase() !== rightChar.toLowerCase()) {
+//             return false;
+//         }
+
+//         left++;
+//         right--;
+//     }
+//     return true;
+// }
+
+// console.log(isPalindrom('lol?'));
+
+//? задачка методом двух указателей. функция принимает массив чисел и значение. нужно найти какие числа в массиве в сумме будут давать переданное искомое значение. сохраняем в переменные индексы указателей. цикл продолжается пока левый указатель меньше правого. В начале каждого цикла получаем текущий резултат сложения, если сумма равна искомой возвращаю складываемые числа если нет проверяю - если сумма меньше то двигаю левый указатель в начале следующего цикла делаю новое вычисление сложения. Если сумма больше - двигаю правый указатель.
+// function num(arr, target) {
+//     let left = 0;
+//     let right = arr.length - 1;
+//     while (left < right) {
+//         let sum = arr[left] + arr[right];
+//         if (sum === target) {
+//             return [arr[left], arr[right]];
+//         } else if (sum < target) {
+//             left++;
+//         } else if (sum > target) {
+//             right--;
+//         }
+//     }
+// }
+// console.log(num([1, 2, 3, 5, 15, 10], 15));
+
+// const array = [1, 2, 3, 4];
+// Array.prototype.customMap = function (callback) {
+//     const result = [];
+//     for (let i = 0; i < this.length; i++) {
+//         const stepResult = callback(this[i], i, this);
+//         result.push(stepResult);
+//     }
+//     return result;
+// };
+// console.log(array.customMap((i) => i * 2));
+
+//? дан массив нужно сделать функцию которая принимает массив и айди который нужно удалить.
+// const users = [
+//     {
+//         id: 1,
+//         name: 'svyat',
+//     },
+//     {
+//         id: 2,
+//         name: 'ярик',
+//     },
+//     {
+//         id: 3,
+//         name: 'димон',
+//     },
+//     {
+//         id: 4,
+//         name: 'толян',
+//     },
+// ];
+// function removeById(id, array) {
+//     return array.filter((item) => item.id !== id);
+// }
+// console.log(removeById(2, users));
+
+//? дан массив с обектами с вложенным в него массивом с объектом, нужно вренуть одноуровневый массив с вложенными одноуровневыми объектами с дополнительным полем. решение ниже.
+// const moto = [
+//     {
+//         marka: 'bmw',
+//         models: [
+//             {
+//                 model: 'qwerty',
+//                 price: 500,
+//                 year: 1234,
+//             },
+//             {
+//                 model: 'wwww',
+//                 price: 444,
+//             },
+//             {
+//                 model: 'jkl',
+//                 price: 111,
+//             },
+//         ],
+//     },
+//     {
+//         marka: 'yamaha',
+//         models: [
+//             {
+//                 model: 'zxc',
+//                 price: 500,
+//             },
+//             {
+//                 model: 'bnm',
+//                 price: 444,
+//             },
+//             {
+//                 model: 'qqm',
+//                 price: 111,
+//             },
+//         ],
+//     },
+// ];
+// //? итерируемся мапом по массиву во вложенные объекты, и на итерации возвращаем объект в который распаковываем сам объект и дополнительное поле марка
+// const arr = moto
+//     .map((marka) => {
+//         return marka.models.map((m) => ({
+//             ...m,
+//             marka: marka.marka,
+//         }));
+//     })
+//     // .flat();
+
+// console.log(arr);
+
+// function customFilter({ array, priceFilter, yearFilter }) {}
+// customFilter({
+//     array: arr,
+//     priceFilter: {
+//         value: 300,
+//         type: 'more',
+//     },
+//     yearFilter: {
+//         value: 1950,
+//         type: 'less',
+//     },
+// });
+
+//!28.06
+//?найти произведение чисел в массиве, сколько самых больших чисел умножать принимаю вторым параметром. сначала сортирую массив. далее могу вырезать принятое колличество.
+// function maxProduct(numbers, size) {
+//     let arrSort = numbers.sort((a, b) => b - a);
+//     let sum = arrSort.slice(0, size);
+//     return sum.reduce((a, b) => a * b);
+// }
+
+// console.log(maxProduct([4, 3, 5], 2));
+
+//? задача со скобками, нужно вернуть кортеж информации о принятой строке [тру если у каждой скобки есть закрывающая, колличество парных скобок, колличество оставшихся]. 1. создаю итоговый массив для результата 2.превращаю строку в массив что идти по нему циклом и указателями и сравнивать значения, определяя является ли элемент символом или буквой. 3.создаю счётчик парных скобок и создаю счётчик не парных скобок и создаю значение итогового булеан результата.
+
+//! 29.06
+//? функция принимает массив целых чисел нужно отсортировать массив и найти число которое повторяется более чем в половине элементов массива, если этого числа нет вернуть -1
+// function dominator(arr) {
+//     let sortArr = arr.sort();
+//     let num = 0;
+//     let cur = 0;
+//     let result = null;
+//     for (let i = 0; i < sortArr.length; i++) {
+//         if (sortArr[i] === sortArr[i + 1]) {
+//             num = sortArr[i];
+//         }
+//     }
+//     sortArr.forEach((element) => {
+//         if (element === num) {
+//             cur++;
+//         }
+//     });
+
+//     if (sortArr.length / 2 > cur) {
+//         result = -1;
+//     } else if (sortArr.length / 2 < cur) {
+//         result = num;
+//     } else {
+//         result = -1;
+//     }
+//     return result;
+// }
+
+// console.log(dominator([1, 1, 1, 2, 2, 2, 2]));
+
+//! 30.06
+//? Дан список целых чисел, определить, является ли сумма его элементов четной или нечетной.
+// function oddOrEven(array) {
+//     if (array.lenght === 0) {
+//         return 'even';
+//     }
+//     let sum = array.reduce((a, b) => a + b, 0);
+//     if (sum % 2 === 0) {
+//         return 'even';
+//     } else {
+//         return 'odd';
+//     }
+// }
+
+// function oddOrEven(arr) {
+//     return arr.reduce((a, b) => a + b, 0) % 2 ? 'odd' : 'even';
+// }
+
+// console.log(oddOrEven([1, 3]));
+
+//! 01.07 отсоритировать массив строк по длинне элементов
+// function sortByLength(array) {
+//     return array.sort((a, b) => a.length - b.length);
+// }
+
+// console.log(sortByLength(['Beg', 'Life', 'I', 'To']));
+
+//? дам объект в json и ключ и значение, нужно вернуть массив с объектом если в нем есть ключ как переданный в аргументы для поиска и значение без учёта регистра. если совпадений нет вернуть пустой массив(это дефолтно). вариант первый: захожу в объект и нахожу массив далее в массиве лежит объект итерируюсь по массиву и если в элементе массива(объекте) есть ключ переданный в аргументы и значение этого ключа приведённое к нижнему регистру равно значению переданному в аргументы то этот элемент массива то есть объект соответсвующий условиям пушу в возвращаемый массив)
+// const characters = {
+//     characters: [
+//         { name: 'Bill Cipher', age: 'Unknown', speciality: 'warp reality' },
+//     ],
+// };
+// function getCharacters(obj, key, val) {
+//     let foundCharacters = [];
+//     obj.characters.forEach((element) => {
+//         if (element[key] && element[key].toLowerCase() == val.toLowerCase()) {
+//             foundCharacters.push(element);
+//         }
+//     });
+//     return foundCharacters;
+// }
+// //второе решение сразу возвращаю элемент из массива который соответствует условиям
+// function getCharacters(obj, key, val) {
+//     return obj.characters.filter(
+//         (elem) => elem[key] && elem[key].toLowerCase() == val.toLowerCase()
+//     );
+// }
+
+// console.log(getCharacters(characters, 'name', 'Bill Cipher'));
+
+//! 02.07
+//? Даны два массива, a1 и a2, отсортируйте элементы a2 на основе нулевого индекса слов в a1, в том же порядке. что я сделал - создал возвращаемый массив. и циклом захожу в исходный, получаю нулевой индекс нулевого элемента, и следующим вложенным циклом ищу совпадения в сортируемом массиве, цикл в сортируемом массиве проходится по всему массиву и находя совпадения пушит найденный элемент в возвращаемый массив. После прохода по сортируемому массиву цикл возвращаемтся наверх к первому, и следующий первый цикл берет уже первый индекс первого элемента в исходном массиве и снова начинается воторой цикл по сортируемому массиву который ищет совпадения.
+// const a1 = ['giraffe', 'orangutan', 'impala', 'elephant', 'rhino'];
+// const a2 = ['rattlesnake', 'eagle', 'geko', 'iguana', 'octopus'];
+
+// function sortArray(a1, a2) {
+//     const resultArr = [];
+//     for (let i = 0; i < a1.length; i++) {
+//         for (let y = 0; y < a2.length; y++) {
+//             if (a1[i][0] === a2[y][0]) {
+//                 resultArr.push(a2[y]);
+//             }
+//         }
+//     }
+//     return resultArr;
+// }
+// console.log(sortArray(a1, a2));
+// //не моё решение
+// const sortArray = (a1, a2) => a1.map((s1) => a2.find((s2) => s1[0] === s2[0]));
+//! 03.07
+//? есть функция которая возвращает число которое делится на 2 без остатка и есть массив, нужно вырезать все числа в начале пока функция возвращает тру
+// function isEven(num) {
+//     return num % 2 === 0;
+// }
+// function dropWhile(arr, pred) {
+//     const arr2 = [...arr];
+//     while (pred(arr2[0])) {
+//         arr2.shift();
+//     }
+//     return arr2;
+// }
+
+// console.log(dropWhile([2, 4, 6, 8, 1, 2, 5, 4, 3, 2], isEven));
+// console.log(isEven(2));
