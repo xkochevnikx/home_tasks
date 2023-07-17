@@ -4079,3 +4079,26 @@ console.log('файлик с задачками');
 
 // console.log(dropWhile([2, 4, 6, 8, 1, 2, 5, 4, 3, 2], isEven));
 // console.log(isEven(2));
+//? написать функцию которая принимает строку и возвращает строку в которой число повторяющиxся символов сконкотенированно с буквой ввод 'AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD' , вывод 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4'. Сначала преобразую строку в массив. Далее иду циклом по массиву и если следующий элемент такой же увеличиваю счетчик на 1 если элемент не равен следующему значит возможно до этого их было нескоько или он был один надо проверить это, если счетчик равен при этом одному значит элемент один и просто добавляю его в массив а если он не равен следующему и при этом счетчик больше одного то есть до этого он повторялся значит я пушу его и следом счетчик в котором значение колличества его повторений и возвращаю счетчик к единице
+
+function stringNum(str) {
+    const arrStr = str.split("");
+    let current = 1;
+    let result = [];
+    for(let i = 0; i <= arrStr.length; i++) {
+        if(arrStr[i] === arrStr[i + 1]) {
+            current++
+        } else if(arrStr[i] !== arrStr[i + 1] && current === 1) {
+            result.push(arrStr[i])
+        } else if (arrStr[i] !== arrStr[i + 1] && current !== 1) {
+            result.push(arrStr[i])
+            result.push(current)
+            current = 1
+        }
+    }
+    return result.join("")
+
+}
+
+console.log(stringNum('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'));
+
